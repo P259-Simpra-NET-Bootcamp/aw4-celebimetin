@@ -8,10 +8,10 @@ namespace Service.DependencyResolvers
     {
         protected override void Load(ContainerBuilder builder)
         {
-            //builder.RegisterType<IUnitOfWork>().As<UnitOfWork>().InstancePerLifetimeScope();
-            builder.RegisterType<ICategoryRepository>().As<CategoryRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<IUnitOfWork>().As<UnitOfWork>().InstancePerLifetimeScope();
+            builder.RegisterType<ICategoryRepository>().As<CategoryRepository>();
 
-            builder.RegisterType<ICategoryService>().As<CategoryService>().InstancePerLifetimeScope();
+            builder.RegisterType<ICategoryService>().As<CategoryService>();
         }
     }
 }
