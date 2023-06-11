@@ -1,12 +1,9 @@
-using Autofac;
-using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Service.DependencyResolvers;
 using WebAPI.Extensions;
 
 namespace WebAPI
@@ -25,7 +22,6 @@ namespace WebAPI
             services.AddControllers();
 
             services.AddDbContextExtension(Configuration);
-            services.AddAutofac(builder => { builder.RegisterModule<AutofacBusinessModule>(); });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI", Version = "v1" });

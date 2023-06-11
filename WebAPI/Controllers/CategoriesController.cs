@@ -1,6 +1,8 @@
 ﻿using Data.Domains;
 using Microsoft.AspNetCore.Mvc;
 using Service;
+using Service.Schema;
+using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
 {
@@ -16,9 +18,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            return Ok(service.GetAll());
+            return Ok(await service.GetAll());
         }
 
         [HttpGet("{id}")]
@@ -29,17 +31,29 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(Category category)
+        public IActionResult Add([FromBody] CategoryRequest request)
         {
+            var category = new Category
+            {
+                Name = request.Name,
+            };
             service.AddAsync(category);
-            return Ok(category);
+            return Ok(request);
         }
 
         [HttpPut]
-        public IActionResult Update(Category category)
+        public IActionResult Update([FromBody] CategoryRequest request, int id)
         {
-            service.Update(category);
-            return Ok(201);
+            var category = new Category
+            {
+                Name = request.Name,
+            };
+            if (id == category.Id)
+            {
+                service.Update(category);
+                return Ok(201);
+            }
+            return BadRequest();
         }
 
         [HttpDelete("{id}")]

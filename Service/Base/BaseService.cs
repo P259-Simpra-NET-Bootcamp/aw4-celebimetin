@@ -26,12 +26,12 @@ namespace Service.Base
 
         public async Task AddAsync(T entity)
         {
-            await unitOfWork.DapperRepository<T>().AddAsync(entity);
+            var list = await unitOfWork.DapperRepository<T>().AddAsync(entity);
         }
 
         public void Update(T entity)
         {
-            unitOfWork.DapperRepository<T>().Update(entity);
+            var list = unitOfWork.DapperRepository<T>().Update(entity);
         }
 
         public void Delete(int id)

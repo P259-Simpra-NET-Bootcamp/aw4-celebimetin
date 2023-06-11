@@ -10,7 +10,7 @@ namespace Data.Contexts
     {
         private readonly IConfiguration configuration;
         private readonly string connectionString;
-        private readonly string databaseType;
+        protected readonly string databaseType;
 
         public DapperDbContext(IConfiguration configuration)
         {

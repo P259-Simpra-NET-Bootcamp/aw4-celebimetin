@@ -11,5 +11,6 @@ namespace Data.Repository.Dapper
         Task<int> AddAsync(T entity);
         int Update(T entity);
         int Delete(int id);
+        Task<int> SaveRangeAsync(IEnumerable<T> list);
     }
 }

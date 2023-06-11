@@ -38,7 +38,7 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Category", "dbo");
                 });
 #pragma warning restore 612, 618
         }
